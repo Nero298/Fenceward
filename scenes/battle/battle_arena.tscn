@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/battle_arena.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/battle/lane.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/battle/battle_hud.gd" id="3"]
+
+[node name="BattleArena" type="Node2D"]
+script = ExtResource("1")
+lanes = [NodePath("Lanes/Lane0"), NodePath("Lanes/Lane1"), NodePath("Lanes/Lane2"), NodePath("Lanes/Lane3"), NodePath("Lanes/Lane4")]
+enemy_spawn_point = NodePath("EnemySpawnPoint")
+fence_max_hp = 1000
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.35, 0.55, 0.3, 1)
+
+[node name="Fence" type="Node2D" parent="."]
+position = Vector2(120, 540)
+
+[node name="FenceSprite" type="Sprite2D" parent="Fence"]
+modulate = Color(0.55, 0.35, 0.18, 1)
+
+[node name="FenceHPBar" type="ProgressBar" parent="Fence"]
+offset_left = -60.0
+offset_top = -400.0
+offset_right = 60.0
+offset_bottom = -380.0
+show_percentage = false
+
+[node name="Lanes" type="Node2D" parent="."]
+
+[node name="Lane0" parent="Lanes" instance=ExtResource("2")]
+position = Vector2(320, 130)
+lane_index = 0
+fence_x = 220.0
+
+[node name="Lane1" parent="Lanes" instance=ExtResource("2")]
+position = Vector2(320, 350)
+lane_index = 1
+fence_x = 220.0
+
+[node name="Lane2" parent="Lanes" instance=ExtResource("2")]
+position = Vector2(320, 570)
+lane_index = 2
+fence_x = 220.0
+
+[node name="Lane3" parent="Lanes" instance=ExtResource("2")]
+position = Vector2(320, 790)
+lane_index = 3
+fence_x = 220.0
+
+[node name="Lane4" parent="Lanes" instance=ExtResource("2")]
+position = Vector2(320, 1010)
+lane_index = 4
+fence_x = 220.0
+
+[node name="EnemySpawnPoint" type="Node2D" parent="."]
+position = Vector2(1820, 130)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3")
+
+[node name="TopBar" type="HBoxContainer" parent="HUD"]
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 900.0
+offset_bottom = 60.0
+
+[node name="WaveLabel" type="Label" parent="HUD/TopBar"]
+text = "Wave 1/8"
+
+[node name="MoneyLabel" type="Label" parent="HUD/TopBar"]
+text = "Money: 0"
+
+[node name="BallsLabel" type="Label" parent="HUD/TopBar"]
+text = "Balls: 0"
+
+[node name="PauseButton" type="Button" parent="HUD/TopBar"]
+text = "Pause"
+
+[node name="SpeedButton" type="Button" parent="HUD/TopBar"]
+text = "1x"
+
+[node name="BottomPanel" type="HBoxContainer" parent="HUD"]
+offset_left = 20.0
+offset_top = 950.0
+offset_right = 1900.0
+offset_bottom = 1070.0
+
+[node name="MonsterSlot0" type="Button" parent="HUD/BottomPanel"]
+custom_minimum_size = Vector2(320, 110)
+text = "Slot 1"
+
+[node name="MonsterSlot1" type="Button" parent="HUD/BottomPanel"]
+custom_minimum_size = Vector2(320, 110)
+text = "Slot 2"
+
+[node name="MonsterSlot2" type="Button" parent="HUD/BottomPanel"]
+custom_minimum_size = Vector2(320, 110)
+text = "Slot 3"
+
+[node name="MonsterSlot3" type="Button" parent="HUD/BottomPanel"]
+custom_minimum_size = Vector2(320, 110)
+text = "Slot 4"
+
+[node name="MonsterSlot4" type="Button" parent="HUD/BottomPanel"]
+custom_minimum_size = Vector2(320, 110)
+text = "Slot 5"

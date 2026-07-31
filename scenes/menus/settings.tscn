@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/menus/settings.gd" id="1"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.12, 0.1, 0.09, 1)
+
+[node name="ResetSaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 400.0
+offset_right = 1110.0
+offset_bottom = 460.0
+text = "Reset Save Data"
+
+[node name="ResetConfirmDialog" type="ConfirmationDialog" parent="."]
+title = "Reset Save?"
+dialog_text = "This deletes all progress permanently. Are you sure?"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 1000.0
+offset_right = 200.0
+offset_bottom = 1050.0
+text = "< Back"

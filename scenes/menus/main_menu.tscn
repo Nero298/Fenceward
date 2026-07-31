@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.12, 0.1, 0.09, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 80.0
+offset_right = 1220.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 56
+horizontal_alignment = 1
+text = "Fenceward"
+
+[node name="ButtonColumn" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 300.0
+offset_right = 1110.0
+offset_bottom = 700.0
+theme_override_constants/separation = 16
+
+[node name="SquadBuilderButton" type="Button" parent="ButtonColumn"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 60)
+text = "Squad Builder"
+
+[node name="StageSelectButton" type="Button" parent="ButtonColumn"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 60)
+text = "Stage Select"
+
+[node name="DungeonSelectButton" type="Button" parent="ButtonColumn"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 60)
+text = "Dungeons"
+
+[node name="WorldBossButton" type="Button" parent="ButtonColumn"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 60)
+text = "World Boss"
+
+[node name="ShopButton" type="Button" parent="ButtonColumn"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 60)
+text = "Shop"
+
+[node name="SettingsButton" type="Button" parent="ButtonColumn"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 60)
+text = "Settings"
+
+[node name="InsufficientSquadPopup" type="AcceptDialog" parent="."]
+title = "Squad Too Small"
+dialog_text = "World Boss requires at least 4 deployed monsters. Visit Squad Builder first."
+
+[connection signal="pressed" from="ButtonColumn/SquadBuilderButton" to="." method="_on_squad_builder_pressed"]
+[connection signal="pressed" from="ButtonColumn/StageSelectButton" to="." method="_on_stage_select_pressed"]
+[connection signal="pressed" from="ButtonColumn/DungeonSelectButton" to="." method="_on_dungeon_select_pressed"]
+[connection signal="pressed" from="ButtonColumn/WorldBossButton" to="." method="_on_world_boss_pressed"]
+[connection signal="pressed" from="ButtonColumn/ShopButton" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="ButtonColumn/SettingsButton" to="." method="_on_settings_pressed"]

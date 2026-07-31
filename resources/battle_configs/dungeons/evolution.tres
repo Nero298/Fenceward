@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="BattleConfig" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/battle_config.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_definition.gd" id="2"]
+
+[sub_resource type="Resource" id="Wave1"]
+script = ExtResource("2")
+enemy_archetype = "walker"
+count = 6
+spawn_interval_seconds = 1.2
+base_hp = 140
+base_atk = 18
+base_spd = 65
+base_money_drop = 3
+
+[sub_resource type="Resource" id="Wave2"]
+script = ExtResource("2")
+enemy_archetype = "tank"
+count = 3
+spawn_interval_seconds = 2.0
+base_hp = 140
+base_atk = 18
+base_spd = 65
+base_money_drop = 3
+
+[sub_resource type="Resource" id="Wave3"]
+script = ExtResource("2")
+enemy_archetype = "miniboss"
+count = 1
+spawn_interval_seconds = 0.0
+base_hp = 140
+base_atk = 22
+base_spd = 55
+base_money_drop = 20
+
+[resource]
+script = ExtResource("1")
+config_id = "evolution"
+display_name = "Evolution Dungeon"
+is_boss_fight = false
+min_squad_size = 1
+wave_definitions = Array[Resource]([SubResource("Wave1"), SubResource("Wave2"), SubResource("Wave3")])
+reward_money = 150
+reward_xp = 80
+reward_ball_chance = 0.05
+reward_material_id = "ember_shard"
+reward_material_amount = 3
+three_star_money_bonus_mult = 1.5
+favored_element = ""

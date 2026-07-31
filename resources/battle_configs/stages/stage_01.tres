@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BattleConfig" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/battle_config.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_definition.gd" id="2"]
+
+[sub_resource type="Resource" id="Wave1"]
+script = ExtResource("2")
+enemy_archetype = "walker"
+count = 5
+spawn_interval_seconds = 1.5
+base_hp = 80
+base_atk = 10
+base_spd = 60
+base_money_drop = 5
+
+[resource]
+script = ExtResource("1")
+config_id = "stage_01"
+display_name = "Stage 1: Fence Line"
+is_boss_fight = false
+min_squad_size = 1
+wave_definitions = Array[Resource]([SubResource("Wave1")])
+reward_money = 100
+reward_xp = 50
+reward_ball_chance = 0.15
+three_star_money_bonus_mult = 1.5

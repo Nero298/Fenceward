@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="BattleConfig" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/battle_config.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_definition.gd" id="2"]
+
+[sub_resource type="Resource" id="Wave1"]
+script = ExtResource("2")
+enemy_archetype = "walker"
+count = 6
+spawn_interval_seconds = 1.4
+base_hp = 90
+base_atk = 11
+base_spd = 62
+base_money_drop = 5
+
+[sub_resource type="Resource" id="Wave2"]
+script = ExtResource("2")
+enemy_archetype = "rusher"
+count = 4
+spawn_interval_seconds = 1.0
+base_hp = 90
+base_atk = 11
+base_spd = 62
+base_money_drop = 6
+
+[resource]
+script = ExtResource("1")
+config_id = "stage_02"
+display_name = "Stage 2: First Rush"
+is_boss_fight = false
+min_squad_size = 1
+wave_definitions = Array[Resource]([SubResource("Wave1"), SubResource("Wave2")])
+reward_money = 130
+reward_xp = 65
+reward_ball_chance = 0.15
+three_star_money_bonus_mult = 1.5

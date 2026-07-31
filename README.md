@@ -44,24 +44,38 @@ scripts/
 - BattleArena core loop: lane engagement rule, wave spawning, enemy archetypes
   (Walker/Rusher/Tank/Ranged/Mini-boss), World Boss mode (time limit, chest table),
   skill system (5 skill types), 3-star reward tracking
+- **Complete, wired scene flow**: Main Menu → Squad Builder, Stage Select,
+  Dungeon Select, World Boss (squad-gated ≥4), Shop, Settings — every button
+  is connected to a real handler, no dead links
+- **Playable content**: 3 stages, all 3 dungeon types (Evolution/Gold/Ball),
+  1 World Boss config, all cross-checked so every node path a script
+  references actually exists in its `.tscn`
 - Android export preset (`Android`, arm64-v8a, Gradle build enabled)
 - GitHub Actions CI: builds signed AAB + debug APK, tags trigger a Release
 
-**You still need to (can't be scaffolded sight-unseen):**
-- Build the actual `.tscn` scene files in the Godot editor (node trees, sprites,
-  UI layout) — the scripts above are ready to attach to nodes, but scenes
-  need visual assembly in-editor
+**You still need to:**
+- Open it in Godot 4.4 and let the editor re-save the `.tscn`/`.tres` files at
+  least once — these were hand-written as plain text (no Godot instance was
+  available to author them interactively), so while every reference has been
+  manually cross-checked, only the editor's own parser can catch subtle
+  formatting issues text inspection can't
+- Add more stages (spec suggests 8–12; only 3 exist) and a weekly rotating
+  Elemental Dungeon (the `favored_element` field exists on BattleConfig but
+  no dungeon sets it yet)
 - Add `min_sdk`/`target_sdk` — these aren't in `export_presets.cfg` in Godot 4.4;
-  they're set via **Project → Export → Android preset → Advanced → Manifest**,
-  or by editing the generated `AndroidManifest.xml` template after a "Custom
-  build" export. Set min SDK 24, target SDK 36 there.
+  set via **Project → Export → Android preset → Advanced → Manifest**. Use
+  min SDK 24, target SDK 36
 - Generate your own upload keystore (`keytool -genkey -v -keystore release.keystore
   -alias upload -keyalg RSA -keysize 2048 -validity 10000`) and add the three
   repo secrets: `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`
 - Replace `com.yourstudio.fenceward` with your real package identifier before
   first release (can't change after)
-- Art: all monsters currently have no sprites assigned (`evolution_sprites` is empty)
+- Art: everything is colored rectangles right now — no sprites anywhere
+- Real drag-and-drop in Squad Builder (currently tap-a-slot-then-tap-a-monster)
 - Balance pass: every number here (stats, wave counts, chest odds) is a starting point
+- The World Boss config currently reuses `emberpup` as a placeholder reward
+  species — the spec implies a unique boss-exclusive monster; add one when
+  the roster grows
 
 ## Architecture note
 

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="BattleConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/battle_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+config_id = "world_boss_infernus"
+display_name = "World Boss: Infernus"
+is_boss_fight = true
+min_squad_size = 4
+boss_species_id = "emberpup"
+boss_level = 40
+boss_hp_pool = 60000
+boss_time_limit_seconds = 120.0
+boss_special_attack_interval = 15.0
+reward_money = 2000
+reward_xp = 200
+reward_ball_chance = 1.0
+three_star_money_bonus_mult = 1.0
+chest_table = [{
+"type": "balls",
+"weight": 70,
+"amount": 20
+}, {
+"type": "money",
+"weight": 25,
+"amount": 5000
+}, {
+"type": "monster",
+"weight": 5,
+"species_id": "emberpup"
+}]
