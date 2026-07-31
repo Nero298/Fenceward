@@ -84,22 +84,29 @@ jobs:
           sed -i "s|keystore/release_password=\"\"|keystore/release_password=\"${{ secrets.ANDROID_KEYSTORE_PASSWORD }}\"|" export_presets.cfg
 
       - name: Import project resources
-        run: |
-          godot --headless --import < /dev/null || true
-          godot --headless --import < /dev/null
+        run: timeout 120 godot --headless --import --quit-after 1 < /dev/null || echo "import step finished or timed out, continuing"
 
       - name: Install Android Gradle build template
-        timeout-minutes: 8
-        run: godot --headless --verbose --install-android-build-template < /dev/null
+        run: timeout 300 godot --headless --install-android-build-template --quit-after 1 < /dev/null || echo "template step finished or timed out, continuing"
+
+      - name: Verify Android build template was installed
+        run: |
+          if [ -d "android/build" ]; then
+            echo "android/build exists, contents:"
+            find android/build -maxdepth 2
+          else
+            echo "ERROR: android/build was not created — template install failed"
+            exit 1
+          fi
 
       - name: Export release AAB
         run: |
           mkdir -p build/android
-          godot --headless --export-release "Android" build/android/${EXPORT_NAME}.aab < /dev/null
+          timeout 300 godot --headless --export-release "Android" build/android/${EXPORT_NAME}.aab < /dev/null
 
       - name: Export debug APK (for sideloading/testing)
         run: |
-          godot --headless --export-debug "Android" build/android/${EXPORT_NAME}-debug.apk < /dev/null
+          timeout 300 godot --headless --export-debug "Android" build/android/${EXPORT_NAME}-debug.apk < /dev/null
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
