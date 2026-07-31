@@ -78,6 +78,9 @@ jobs:
       - name: Import project resources
         run: godot --headless --import
 
+      - name: Install Android Gradle build template
+        run: godot --headless --install-android-build-template
+
       - name: Export release AAB
         run: |
           mkdir -p build/android
