@@ -60,14 +60,14 @@ jobs:
         run: |
           mkdir -p ~/.config/godot
           cat > ~/.config/godot/editor_settings-4.tres << EOF
-[gd_resource type="Resource" format=3]
+          [gd_resource type="Resource" format=3]
 
-[resource]
-export/android/android_sdk_path = "$ANDROID_SDK_ROOT"
-export/android/debug_keystore = "/home/runner/keystores/release.keystore"
-export/android/debug_keystore_user = "${{ secrets.ANDROID_KEY_ALIAS }}"
-export/android/debug_keystore_pass = "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"
-EOF
+          [resource]
+          export/android/android_sdk_path = "$ANDROID_SDK_ROOT"
+          export/android/debug_keystore = "/home/runner/keystores/release.keystore"
+          export/android/debug_keystore_user = "${{ secrets.ANDROID_KEY_ALIAS }}"
+          export/android/debug_keystore_pass = "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"
+          EOF
 
       - name: Inject release keystore into export preset
         run: |
