@@ -79,6 +79,7 @@ jobs:
         run: godot --headless --import
 
       - name: Install Android Gradle build template
+        timeout-minutes: 3
         run: godot --headless --install-android-build-template
 
       - name: Export release AAB
