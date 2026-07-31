@@ -86,8 +86,32 @@ jobs:
       - name: Import project resources
         run: timeout 120 godot --headless --import --quit-after 1 < /dev/null || echo "import step finished or timed out, continuing"
 
+      - name: Test network connectivity for Gradle template sources
+        run: |
+          echo "=== Testing GitHub ==="
+          curl -sI --max-time 15 https://github.com || echo "GitHub unreachable"
+          echo "=== Testing Google Maven (dl.google.com) ==="
+          curl -sI --max-time 15 https://dl.google.com || echo "dl.google.com unreachable"
+          echo "=== Testing Maven Central ==="
+          curl -sI --max-time 15 https://repo.maven.apache.org || echo "Maven Central unreachable"
+          echo "=== Testing Google services ==="
+          curl -sI --max-time 15 https://maven.google.com || echo "maven.google.com unreachable"
+
       - name: Install Android Gradle build template
-        run: timeout 300 godot --headless --install-android-build-template < /dev/null
+        run: |
+          for attempt in 1 2 3; do
+            echo "=== Attempt $attempt ==="
+            if timeout 240 godot --headless --install-android-build-template < /dev/null; then
+              echo "Success on attempt $attempt"
+              break
+            fi
+            if [ "$attempt" = "3" ]; then
+              echo "All attempts failed"
+              exit 1
+            fi
+            echo "Attempt $attempt failed/timed out, retrying..."
+            sleep 5
+          done
 
       - name: Verify Android build template was installed
         run: |
