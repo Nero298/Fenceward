@@ -25,11 +25,14 @@ func _ready() -> void:
 	_maybe_reset_daily()
 
 func _maybe_reset_daily() -> void:
-	var today := Time.get_date_dict_from_system().get("day", 0) + Time.get_date_dict_from_system().get("month", 0) * 31
+	var today: int = Time.get_date_dict_from_system().get("day", 0) + Time.get_date_dict_from_system().get("month", 0) * 31
 	if today != last_daily_reset_day:
 		dungeon_free_entries_today = {"evolution": 3, "gold": 3, "ball": 3}
 		world_boss_daily_tickets = 1
 		last_daily_reset_day = today
+
+func _maybe_reset_daily_check_only() -> void:
+	pass
 
 # ---- Currency ----
 
