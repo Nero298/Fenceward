@@ -87,7 +87,7 @@ jobs:
         run: timeout 120 godot --headless --import --quit-after 1 < /dev/null || echo "import step finished or timed out, continuing"
 
       - name: Install Android Gradle build template
-        run: timeout 300 godot --headless --install-android-build-template --quit-after 1 < /dev/null || echo "template step finished or timed out, continuing"
+        run: timeout 300 godot --headless --install-android-build-template < /dev/null
 
       - name: Verify Android build template was installed
         run: |
