@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+species_id = "gustling"
+display_name = "Gustling"
+element = "Wind"
+rarity = "Rare"
+evolution_names = Array[String](["Gustling", "Galeraptor"])
+evolution_max_level = Array[int]([25, 999])
+base_hp = 270
+base_atk = 50
+base_def = 18
+base_spd = 140
+hp_per_level = 10.0
+atk_per_level = 2.4
+def_per_level = 0.7
+spd_per_level = 0.7
+evolution_stat_multiplier = 1.4
+skill_name = "Gale Strike"
+skill_description = "Bonus damage hit versus fast enemies (Rushers)."
+skill_cooldown_seconds = 7.0
+skill_type = "single_target"
+evolution_material_id = Array[String](["gale_shard"])
+evolution_money_cost = Array[int]([800])
+rank_fragments_required = Array[int]([5, 10, 20, 40, 80])
+rank_stat_multiplier = Array[float]([1.0, 1.15, 1.32, 1.52, 1.75, 2.0])

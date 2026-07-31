@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+species_id = "glimmox"
+display_name = "Glimmox"
+element = "Light"
+rarity = "Epic"
+evolution_names = Array[String](["Glimmox", "Radiantis"])
+evolution_max_level = Array[int]([30, 999])
+base_hp = 340
+base_atk = 60
+base_def = 22
+base_spd = 110
+hp_per_level = 14.0
+atk_per_level = 2.8
+def_per_level = 1.0
+spd_per_level = 0.5
+evolution_stat_multiplier = 1.45
+skill_name = "Radiant Heal"
+skill_description = "Small heal applied to the fence."
+skill_cooldown_seconds = 14.0
+skill_type = "heal_fence"
+evolution_material_id = Array[String](["radiant_shard"])
+evolution_money_cost = Array[int]([1500])
+rank_fragments_required = Array[int]([5, 10, 20, 40, 80])
+rank_stat_multiplier = Array[float]([1.0, 1.15, 1.32, 1.52, 1.75, 2.0])

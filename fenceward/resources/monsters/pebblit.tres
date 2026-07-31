@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+species_id = "pebblit"
+display_name = "Pebblit"
+element = "Earth"
+rarity = "Common"
+evolution_names = Array[String](["Pebblit", "Boulderak", "Cragtitan"])
+evolution_max_level = Array[int]([15, 30, 999])
+base_hp = 480
+base_atk = 30
+base_def = 40
+base_spd = 70
+hp_per_level = 18.0
+atk_per_level = 1.4
+def_per_level = 2.0
+spd_per_level = 0.2
+evolution_stat_multiplier = 1.35
+skill_name = "Stone Wall"
+skill_description = "Brief self DEF buff."
+skill_cooldown_seconds = 12.0
+skill_type = "buff_def"
+evolution_material_id = Array[String](["clay_shard", "granite_core"])
+evolution_money_cost = Array[int]([500, 2500])
+rank_fragments_required = Array[int]([5, 10, 20, 40, 80])
+rank_stat_multiplier = Array[float]([1.0, 1.15, 1.32, 1.52, 1.75, 2.0])

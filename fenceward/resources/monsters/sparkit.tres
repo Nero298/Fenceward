@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+species_id = "sparkit"
+display_name = "Sparkit"
+element = "Electric"
+rarity = "Rare"
+evolution_names = Array[String](["Sparkit", "Voltaur"])
+evolution_max_level = Array[int]([25, 999])
+base_hp = 260
+base_atk = 55
+base_def = 15
+base_spd = 130
+hp_per_level = 10.0
+atk_per_level = 2.6
+def_per_level = 0.6
+spd_per_level = 0.6
+evolution_stat_multiplier = 1.4
+skill_name = "Chain Shock"
+skill_description = "Arcs damage to 2 nearby lanes in addition to its own."
+skill_cooldown_seconds = 10.0
+skill_type = "aoe_adjacent"
+evolution_material_id = Array[String](["volt_shard"])
+evolution_money_cost = Array[int]([800])
+rank_fragments_required = Array[int]([5, 10, 20, 40, 80])
+rank_stat_multiplier = Array[float]([1.0, 1.15, 1.32, 1.52, 1.75, 2.0])
